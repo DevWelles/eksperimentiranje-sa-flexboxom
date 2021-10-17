@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  border: 5px solid darkgray;
+  margin: 20px;
+}
+header {
+  border: 4px dashed rgb(35, 165, 159);
+  display: flex;
+  min-height: 100px;
+  justify-content: space-between;
+  /* align-items: stretch; */
+  padding: 20px 10px 10px 10px;
+  /* umjesto align-items stretch sam mogao staviti flex-end i onda samo donji padding da sve odmaknem od bordera
+   jer koliko vidim na slici chid itemi od headera su malo bliže donjem borderu*/
+  /* kad stavim ovaj padding 20px 0px 10px 0px; onda mi nije ni podreban align-items stretch*/
+  margin: 0px 15px; /*da odmaknem sa strane od bordera sa bodyeam, isto tako sam stavio na mainFlex div */
+  gap: 100px;
+}
+
+.logo {
+  /* width: 250px; */
+  flex-grow: 1; /*Pitanje, znam da se razmak između child elemenata u flexboxu radi pomoću gapa na parent container
+                  a kako se određuje veličina child elemenata? Je li ispravno korisitti flex grow ili možemo i odrediti
+                  width u jedinicama (px,em, rem...) jer ja kad ovdje stavim width u px onda ih lijepo raporedim
+                  a kad pokušam sa flex grow onda mi ovaj zadnji child element zauzme više mjesta nego što očekujem
+                  i sve mi pomakne i breaka haha, uvijek isto pitanje za css.. Ok but why? */
+  /* Znam da je sam div sa classom .search veći od diva Logo i da mi zato gurne sve u lijevo
+                  ali što nebi to flex grow trebao izjednačit? i zašto neće i kako da izjednači haha? */
+  border: 4px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center; /*ovo je da centriram sam text "Logo" unutar diva*/
+  font-size: 35px;
+}
+
+.primaryNav {
+  /* width: 800px; */
+  flex-grow: 2;
+  border: 5px solid green;
+}
+
+.primaryNav > ul {
+  width: 100%;
+  height: 100%; /*stavio sam 100% da bude velik kao nav jer onda lakše poziconiram djecu od ul */
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.primaryNav a {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.search {
+  /* width: 250px; */
+  /* flex-grow: 1; */
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.search label {
+  flex-basis: 100%; /*da bude search label iznad inputa */
+}
+
+.input {
+  /* flex-grow: 1; */
+  /* Mislim da mi ovaj input field najviše problema radi i gura sve elemente na način koji ja ne očekujem */
+}
+.submit {
+  flex-grow: 1;
+}
+
+.mainFlex {
+  border: 4px dashed rgb(180, 180, 34);
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  /* 
+  stavio sam align items na stretch i onda ako želim razmak od gornjeg dijela (headera)
+  i donjeg dijela (footera) to napravim sa paddingom na ovaj main flex 
+  ili sa marginama na footer i header da odmaknem njihov border od bordera ovog mainflex diva */
+  padding: 10px 10px;
+  margin: 5px 15px;
+  /* gap: 150px; */
+}
+.secondaryNav {
+  width: 250px;
+  /* flex-grow: 1; */ /*ove child elemente od flexboxa sam stavio width u px jer kad pokušam sa flex grow onda mi je
+                      odrediti pojedinačnu veličinu da se slažu jer koristim padding i onda se povećavau i smanjuju
+                      odnosno narušavaju odnos flex growa, a ovako mi je lipo uvik fixed width.
+                      Da li je to ispravno ili postoji neki nacin da lipo sa flex grow i paddingom dobijem jednako velike child elemente? */
+  background-color: lightgray; /*kako su oni u zadatki napravili da backgroudn color bude veći od bordera? ili je to samo takva slika pa ispada tako?
+  border: 5px solid green;
+  padding: 10px; /* Je li ispravno namještati širinu elemenata sa paddingom?
+                      tj. meni i treba ovdje ispuna (padding) samog fonta pa pitam je li ipsravno i najjednostavniej to napraviti sa paddingom
+                      ili je ispravniej odrediti veličinu pojedinog kontejnera? */
+}
+
+.secondaryNav > ul {
+  display: flex;
+  height: 100%;
+  list-style-type: none;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center;
+  width: 100%; */
+
+  /* Ova dva selektora mi ne igraju ulogu više jer sam child elemente pozicionirao sa paddingom i widthom: 
+  Dosta sam se tu igrao i isprobavao svega i tako mi uvijek bude kad radim bilo što sa cssom.
+  većinom samo googlam pogledam neki tutorial i napravim po njemu.
+  Uvijek me bune sve te razlike pozicioniranja: kad koristit padding kad margin, kad sve moguće varijante unutar flexboxa
+  i kad što i tko koga i zašto gura livo desno...? Ako mi uspiješ pobliže to sve objasnit imaš pivu od mene kad dođeš u Zadar :) */
+}
+
+.secondaryNav a {
+  background-color: white;
+  padding: 20px 60px; /* Evo i ovdje recimo ja sad stavim padding i onda širim cijeli element i sad moram zapamtiti
+                        koliki sam padding ovdje stavio i na sve elemente tako da isti stavim i na elemente unutar
+                        diva Aside i kad stavim jednom i drugom flex grow 1 da budu iste veličine, inače će biti veći
+                        onaj div koji ima veći padding. Ili da jednostavno odredim njihove širine fiksno u px? */
+  color: black;
+  text-decoration: none;
+  width: 100%;
+}
+.secondaryNav li {
+  width: 100%;
+}
+
+main {
+  width: 800px;
+  /* flex-grow: 2; */
+  border: 5px dashed purple;
+  padding-bottom: 20px;
+}
+main article {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+aside {
+  width: 250px;
+  /* flex-grow: 1; */
+  border: 5px solid lightgreen;
+  background-color: lightgray;
+  padding: 10px; /*mora biti isto 10px kao i secondaryNav*/
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+section {
+  border: 5px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+section ul {
+  background-color: white;
+  padding: 13px 40px;
+}
+
+section a {
+  color: black;
+  margin: 5px 0px;
+}
+
+section li {
+  margin: 10px;
+}
+article {
+  border: 5px solid red;
+  margin: 10px;
+  padding: 10px;
+}
+
+footer {
+  margin: 10px 20px;
+  border-top: 2px dashed black;
+}
+footer ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  color: gray;
+  margin: 0px 30px;
+}
